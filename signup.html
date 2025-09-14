@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+      form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #4B0082; /* darker purple */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    height: 80vh;
+
+    
+   
+    
+}
+
+        .form-group {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        body {
+            background-color: darkslateblue;
+            color: #ffffff;
+        }
+
+        form input {
+            width: 300px;
+            /* or any size you want */
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+        .error {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 1px;
+}
+button {
+    width: 150px;
+    padding: 10px;
+    background-color: #FFD700; /* golden button */
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #FFA500; /* orange on hover */
+    color: #fff;
+}
+.result{
+    color: rgb(255, 255, 255);font-weight: bold;
+}
+
+    </style>
+</head>
+<body>
+    <h1 class="text-center mb-5"><U>login page</U></h1>
+    <form action="">
+        <div class=" form-group">
+            <label for="fname">First name</label>
+            <input type="text" id="fname">
+            <div class="error"></div>
+
+            <label for="lname">last name</label>
+            <input type="text" id="lname">
+             <div class="error"></div>
+
+            <label for="mail">Email</label>
+            <input type="email" id="mail">
+             <div class="error"></div>
+
+            <label for="number">mobile</label>
+            <input type="tel" id="number">
+            <div class="error"></div>
+
+<div class="result">
+
+</div>
+        </div>
+<button id="btn">click</button>
+    </form>
+
+    <script>
+       
+
+// error statement
+        
+      var btn=document.querySelector("#btn")
+
+btn.addEventListener("click",(event)=>
+{event.preventDefault() 
+     var fname=document.querySelector("#fname").value.trim()
+        var lname=document.querySelector("#lname").value.trim()
+        var mail=document.querySelector("#mail").value.trim()
+        var number=document.querySelector("#number").value.trim()
+var errors=document.querySelectorAll(".error")  
+var result=document.querySelector(".result")
+let isValid=true;
+var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // simple email pattern
+ errors.forEach(error => error.innerText = "");
+if(!fname){
+    errors[0].innerText=" ⚠️ Please enter your first name";
+    isValid=false;
+} if(!lname){
+    errors[1].innerText = "⚠️ Please enter your last name";
+    isValid=false
+
+} if(!mail){
+    errors[2].innerText = "Email is required";
+    isValid = false;
+} else if(!emailPattern.test(mail)){
+    errors[2].innerText = "Enter a valid email address ❗";
+    isValid = false;
+}if(!number){
+    errors[3].innerText = "⚠️ Mobile number is required";
+    isValid=false
+}
+    
+if(isValid)
+{
+result.innerText="---You have successfully signed in ✅---"
+}
+})
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
