@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Emergency Skill Share</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { color: darkred; }
+    form { margin-bottom: 20px; }
+    input, button { margin: 5px; padding: 6px; }
+    ul { padding: 0; list-style: none; }
+    li { background: #f2f2f2; margin: 5px 0; padding: 8px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <h1>🚨 Emergency Skill Share</h1>
+
+  <h2>Report an Emergency</h2>
+  <form id="emergencyForm">
+    <input type="text" id="description" placeholder="Emergency (e.g., Bike broke)" required>
+    <input type="text" id="location" placeholder="Location" required>
+    <button type="submit">Report</button>
+  </form>
+
+  <h2>Register as Helper</h2>
+  <form id="helperForm">
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="text" id="skill" placeholder="Skill (e.g., Mechanic)" required>
+    <input type="text" id="helperLocation" placeholder="Location" required>
+    <button type="submit">Register</button>
+  </form>
+
+  <h2>📋 Emergencies</h2>
+  <ul id="emergencyList"></ul>
+
+  <h2>🛠 Available Helpers</h2>
+  <ul id="helperList"></ul>
+
+  <script>
+    let emergencies = [];
+    let helpers = [];
+
+    // Add emergency
+    document.getElementById('emergencyForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const description = document.getElementById('description').value;
+      const location = document.getElementById('location').value;
+
+      emergencies.push({ description, location });
+      document.getElementById('description').value = '';
+      document.getElementById('location').value = '';
+      loadEmergencies();
+    });
+
+    // Add helper
+    document.getElementById('helperForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const skill = document.getElementById('skill').value;
+      const location = document.getElementById('helperLocation').value;
+
+      helpers.push({ name, skill, location });
+      document.getElementById('name').value = '';
+      document.getElementById('skill').value = '';
+      document.getElementById('helperLocation').value = '';
+      loadHelpers();
+    });
+
+    function loadEmergencies() {
+      const list = document.getElementById('emergencyList');
+      list.innerHTML = '';
+      emergencies.forEach((em, index) => {
+        const li = document.createElement('li');
+        li.textContent = `#${index + 1} → ${em.description} at ${em.location}`;
+        list.appendChild(li);
+      });
+    }
+
+    function loadHelpers() {
+      const list = document.getElementById('helperList');
+      list.innerHTML = '';
+      helpers.forEach((h, index) => {
+        const li = document.createElement('li');
+        li.textContent = `#${index + 1} → ${h.name} (${h.skill}) near ${h.location}`;
+        list.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html>

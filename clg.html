@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Skill Share</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Emergency Skill Share</h1>
+    </header>
+    <main>
+        <section id="request-form">
+            <h2>Post an Emergency Request</h2>
+            <form id="emergency-request">
+                <label for="description">Description of Emergency:</label>
+                <textarea id="description" required></textarea>
+                <button type="submit">Submit Request</button>
+            </form>
+        </section>
+        <section id="available-help">
+            <h2>Available Help</h2>
+            <ul id="help-list"></ul>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

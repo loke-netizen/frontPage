@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+            box-shadow: 0px 0 10px rgb(76, 2, 2);
+            width: fit-content;
+            margin: auto;
+            border-radius: 10px;
+        }
+
+        input,
+        button {
+            padding: 10px;
+            margin: 8px;
+            border-radius: 8px;
+            border: .3px solid gray;
+        }
+
+        button {
+            color: white;
+            background-color: rgb(31, 145, 31);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>🥦BM Calculator</h1>
+    </header>
+    <input type="number" id="weight" placeholder="Weight in kg">
+    <input type="number" id="height" placeholder="Height in cm"><br>
+    <button id="Calculator" onclick="calculation()">Calculate BMI</button><br>
+    <div id="result"></div>
+
+
+    <script>
+        function calculation() {
+            var weight = parseFloat(document.getElementById("weight").value);
+            var height = parseFloat(document.getElementById("height").value);
+            var result = document.getElementById("result");
+            if (!weight || !height || weight <= 0 || height <= 0) {
+                return result.innerHTML = "Please enter valid weight and height";
+            }
+
+
+            var BMI = weight / (height ** 2);
+            var msgbox = "your BMI is " + BMI.toFixed(2);
+            if (BMI < 18.5) {
+                msgbox += "<br>You are underweight";
+            }
+            else if (BMI >= 18.5 && BMI < 24.9) {
+                msgbox += "<br>You are healthy";
+            }
+            else if (BMI >= 25 && BMI < 29.9) {
+                msgbox += "<br>You are overweight";
+            }
+            else {
+                msgbox += "<br>You are more overweight";
+            }
+            result.innerHTML = msgbox;
+        }
+    </script>
+
+
+
+
+    <script>
+        let userAge = prompt("enter your age")
+        calculate(userAge)
+        function calculate(age) {
+
+            const maxAge = 90;
+              if(!age){
+                alert("data is wrong");
+            }
+            else if (0 < age && age <= 90) {
+                alert("you have to live until 90")
+                const remaingYears = maxAge - age;
+                let remaingDays = remaingYears * 365;
+                let remaingWeeks = remaingYears * 52
+                let remaingMonths = remaingYears * 12
+                alert(remaingYears + " " + remaingDays + " " + remaingWeeks + " " + remaingMonths)
+
+            }
+          
+            else if (age < 0) {
+                alert("data is wrong");
+            }
+            else {
+                alert("you are unpreditable man your living time is unpreditable by humans")
+            }
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice</title>
+    <style>
+        div { font-weight: bold;
+            font-size: 100px;
+            width: fit-content;
+            background: linear-gradient(90deg, rgb(255, 0, 187) 30%, rgb(2, 30, 242)90%);
+            color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-size: 50px;
+            width: 300px;
+            font-weight: bold;
+           
+        
+        }
+
+
+       .linear {           
+            background: linear-gradient(90deg, rgb(255, 0, 187) 30%, rgb(2, 30, 242)90%);
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;      
+
+        }
+        .red{
+            color: red;
+        }
+        .rare{
+            background: linear-gradient(135deg, #ffd700, #ff7e5f, #8e44ad);
+            color: transparent;
+            background-clip: text;
+        }
+
+        button {
+            font-size: 20px;
+            padding: 8px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: #7675cb;
+            border: none;
+            color: white;
+        }
+      
+    </style>
+</head>
+
+<body style="text-align: center; background-color: #c6b19a;">
+    <h1>🎲Dice Roller</h1>
+    <!-- <div>⚁⚂⚃⚄⚅</div> -->
+    <div id="first" style="display: inline">⚀</div>
+    <section style="display: flex; justify-content: space-around; gap: 20px;">
+        <div id="second" >⚀</div>
+        <div id="third" >⚀</div>
+    </section>
+    <button id="rollButton">Roll Dice</button><br>
+    <h2></h2>
+    <script>
+        var rollButton = document.getElementById("rollButton");
+        var all = document.querySelectorAll("div")
+
+        var dice = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
+        var dice1;  // global (outside function)
+        var dice2;  // global (outside function)
+        var dice3;  // global (outside function)
+        var h2 = document.querySelector("h2")
+        rollButton.addEventListener("click", () => {
+            dice1 = Math.floor(Math.random() * 6); // 0-5
+            dice2 = Math.floor(Math.random() * 6); // 0-5
+            dice3 = Math.floor(Math.random() * 6); // 0-5
+            all[0].innerText = dice[dice1];
+            all[1].innerText = dice[dice2];
+            all[2].innerText = dice[dice3];
+            if (dice1 > dice2 && dice1 > dice3) {
+                h2.innerText = "🔥 Player 2 dominates!"
+                 h2.style.margin="30px auto"
+                 h2.className="linear"
+            }
+            else if (dice2 > dice1 && dice2 > dice3) {
+                h2.innerText = "💥 Player 1 dominates!"
+                h2.style.margin="35px auto auto 0";
+                h2.className="linear"
+            }
+            else if (dice3 > dice1 && dice3 > dice2) {
+                h2.innerText = "🔥 Player 3 dominates!"
+                 h2.style.margin="35px 0 auto auto";
+                 h2.className="linear"
+            }
+            else if(dice1===dice2&&dice2===dice3) {
+                h2.innerText = "🎉 Everyone wins!";
+                h2.style.margin="auto";
+                h2.className="rare"
+            }
+            else {
+                h2.innerText = "✨ Double champions!";
+                h2.style.margin="auto";
+                h2.className="red"
+                
+            }
+
+
+
+        })
+
+    </script>
+</body>
+
+</html>

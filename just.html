@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            margin: 20px;
+        }
+        .red {
+            background-color: red;
+        }
+
+    </style>
+</head>
+<body bgcolor="lhtgray" text="cyan">
+    <h1 id="title">Just a Test Page</h1>
+    <p id="p1">This is a simple HTML page for testing purposes.</p>
+    <div class="container"></div>
+    <button onclick="changeText()" type="button">change text</button>
+    <button onclick="changeStyle()" type="reset">change style</button>
+    <button onclick="addParagraph()" type="button">Add paragraph</button>
+    <button onclick="replacePara()" type="button">replace para</button>
+    <button onclick="toggleRed()" type="button">toggle red</button>
+
+
+    <script>
+        var p1=document.querySelector("#p1");
+        var title=document.querySelector("#title");
+        var container=document.querySelector(".container");
+
+        function changeText(){
+           title.textContent="The text has been changed to the no "+Math.floor(Math.random()*10)
+            ;
+        }
+        function changeStyle(){
+            container.className="red container  "
+            container.style.borderRadius="50%";
+         
+            container.style.boxShadow="0px 0 35px red";
+        }
+        function toggleRed(){
+            container.classList.toggle("red");
+        }
+            
+        function addParagraph(){
+            var newPara=document.createElement("p");
+            newPara.textContent="This is a new paragraph added to the body "+Math.floor(Math.random()*10);
+            document.body.appendChild(newPara);
+        }
+        function replacePara(){
+            var oldp1=document.getElementById("p1")
+            let newp1=document.createElement("p")
+        newp1.innerText="(❁´◡`❁)(❁´◡`❁)(❁´◡`❁)(❁´◡`❁)";
+        oldp1.parentNode.replaceChild(newp1,oldp1);
+
+        }
+
+        let btn=document.querySelectorAll("button");
+            console.log("Button type is:", btn[1].getAttribute("type"));  // getAttribute
+
+        btn[0].setAttribute("title", "i am 1st button")
+        btn[1].setAttribute("title", "i am 2nd button")
+        btn[2].setAttribute("title", "i am 3rd button")
+        btn[3].setAttribute("title", "i am 4th button")
+        btn[4].setAttribute("title", "i am 5th button")
+
+        const body = document.body;
+    console.log("First child of body:", body.firstChild);         // firstChild
+    console.log("Children of body:", body.children);              
+
+    </script>
+</body>
+</html>
+
+
+

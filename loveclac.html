@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            background-color: palevioletred;
+          
+        }
+
+        .container {
+             transform: scale(1.2);
+            background-color: rgb(242, 222, 222);
+           
+            color: purple;
+            text-align: center;
+            width: max-content;
+            margin: 100px auto;
+            box-shadow: 0px 0 10px rgb(255, 255, 255);
+            padding: 10px;
+        }
+.container {
+      zoom: 120%;
+    transition: transform 0.3s ease;
+}
+
+
+
+        .container,
+        input,
+        button {
+            border-radius: 8px;
+        }
+
+        input,
+        button {
+            padding: 8px;
+            margin: 10px 0;
+            border: .3px solid gray;
+           
+        }
+        button{
+            cursor: pointer;
+            background: linear-gradient(to right,rgb(210, 2, 210) 30%,rgb(117, 3, 117) );
+
+            color: white;
+        }
+        button:hover {
+            /* background-color: rgb(128, 0, 128); */
+            background: linear-gradient(to right, rgb(117, 3, 117)30%, rgb(210, 2, 210));
+        }
+        #b2 {
+            display: none;
+        }   
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Love Calculator
+           
+        </h1>
+        <input type="text" id="male">
+        <input type="text" id="female"> <br>
+        <button id="b1" onclick="calculatinglove();">Calculate Love</button>
+        <button id="b2" onclick="resetForm()" ></button>
+        <div id="result"></div>
+        
+    </div>
+
+    <script>
+        var b1=document.getElementById("b1");
+        var b2=document.getElementById("b2");
+        function resetForm() {
+            b2.style.display = "none";
+           location.reload();
+        }
+      
+        function calculatinglove() {
+            var maleName = document.getElementById("male").value;
+            var femaleName = document.getElementById("female").value;
+            var loveScore = (Math.random() * 100 + 1).toFixed(2);
+            var result = document.getElementById("result");
+
+
+            var msgbox = `❤️Your love score is ${loveScore} %💕`;
+            if (!maleName || !femaleName) {
+                return result.innerHTML = "Please enter both names";
+
+            }
+            else if (loveScore > 70) {
+                msgbox += "<br>You love each other like Romeo and Juliet";
+            }
+            else if (loveScore > 30 && loveScore <= 70) {
+                msgbox += "<br>You have a decent love score";
+            }
+            else {
+                msgbox += "<br>Sorry, you might need to work on your relationship.";
+            }
+
+            result.innerHTML = msgbox;
+
+            //  b1.style.display = "none";
+            b1.innerHTML="<style> #b1 { display: none; } </style>"
+            //   b2.style.display = "inline";
+            b2.innerHTML="<style> #b2 { display: inline; } </style>RESET"
+        }
+
+    </script>
+    
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .new{
+            background-color: aqua;
+            width: fit-content;
+            padding: 2px .2px;
+            margin: 2px 0px;
+         
+        }
+    </style>
+</head>
+<body bgcolor="brown">
+    <h1 id="header">not printing in webpage</h1>
+    <ul class="items">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+<button id="addItemButton">Add Item</button>
+
+    <script>
+        var header = document.getElementById("header");
+        console.log(header);
+        header.textContent = "👍My list items";
+
+        document.querySelector("#addItemButton").onclick=function(){
+            var newitem=document.createElement("li");
+            newitem.textContent="New item "+Math.floor(Math.random()*101);
+            document.getElementsByClassName("items")[0].appendChild(newitem);
+            newitem.setAttribute("class","new");
+        }
+
+    </script>
+</body>
+</html>

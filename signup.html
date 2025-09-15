@@ -105,7 +105,10 @@ button:hover {
       var btn=document.querySelector("#btn")
 
 btn.addEventListener("click",(event)=>
-{event.preventDefault() 
+{
+
+    event.preventDefault() 
+   
      var fname=document.querySelector("#fname").value.trim()
         var lname=document.querySelector("#lname").value.trim()
         var mail=document.querySelector("#mail").value.trim()
@@ -118,11 +121,24 @@ var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // simple email pattern
 if(!fname){
     errors[0].innerText=" ⚠️ Please enter your first name";
     isValid=false;
+}else if (fname.length < 3) {
+    errors[0].innerText = "First name must be at least 3 letters ✍️";
+    isValid = false;
+}else if (!/^[A-Za-z]+$/.test(fname)) {
+    errors[0].innerText = "First name must contain only letters 🔠";
+    isValid = false;
 } if(!lname){
     errors[1].innerText = "⚠️ Please enter your last name";
     isValid=false
 
-} if(!mail){
+}else if(lname.length<3){
+      errors[1].innerText = "Last name must be at least 3 letters ✍️";
+    isValid=false
+}else if (!/^[A-Za-z]+$/.test(lname)) {
+    errors[1].innerText = "Last name must contain only letters 🔠";
+    isValid = false;
+}
+ if(!mail){
     errors[2].innerText = "Email is required";
     isValid = false;
 } else if(!emailPattern.test(mail)){
@@ -131,6 +147,10 @@ if(!fname){
 }if(!number){
     errors[3].innerText = "⚠️ Mobile number is required";
     isValid=false
+}
+else if (!/^\d{10}$/.test(number)) {
+    errors[3].innerText = "Mobile number must be exactly 10 digits 📱";
+    isValid = false;
 }
     
 if(isValid)

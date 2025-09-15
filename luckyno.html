@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: cadetblue;">
+    <h1> Lucky Digit</h1>
+    <input type="number" id="num" placeholder="Enter a number" >
+    <button onclick="checkLucky()">Click me!</button>
+
+
+    <script>
+        function checkLucky() {
+            var num = document.getElementById("num").value;
+            for(i=1; i<=num; i++){
+                if(i===13){
+                    console.log("skipping 13 number");
+                    continue
+                }
+                else if(num==i){
+                    console.log(num+" is a lucky number");
+                    break;
+                }
+                else{
+                    console.log(i +" is not a lucky number");
+                }
+            }
+        }
+    </script>
+</body>
+</html>

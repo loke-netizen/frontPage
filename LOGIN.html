@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(120deg, #2980b9, #6dd5fa);
+    }
+    .form-container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      width: 320px;
+    }
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      font-size: 14px;
+    }
+    .error {
+      color: red;
+      font-size: 12px;
+      margin-top: 3px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #2980b9;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #2573a7;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Signup</h2>
+    <form id="signupForm">
+      <div class="form-group">
+        <input type="text" id="name" placeholder="Full Name">
+        <div id="nameError" class="error"></div>
+      </div>
+      <div class="form-group">
+        <input type="email" id="email" placeholder="Email">
+        <div id="emailError" class="error"></div>
+      </div>
+      <div class="form-group">
+        <input type="tel" id="phone" placeholder="Phone Number">
+        <div id="phoneError" class="error"></div>
+      </div>
+      <div class="form-group">
+        <input type="password" id="password" placeholder="Password">
+        <div id="passwordError" class="error"></div>
+      </div>
+      <button type="submit">Signup</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById("signupForm");
+
+    form.addEventListener("submit", function(event) {
+      e.preventDefault();
+
+      // get values
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      // error divs
+      const nameError = document.getElementById("nameError");
+      const emailError = document.getElementById("emailError");
+      const phoneError = document.getElementById("phoneError");
+      const passwordError = document.getElementById("passwordError");
+
+      // clear previous errors
+      nameError.textContent = "";
+      emailError.textContent = "";
+      phoneError.textContent = "";
+      passwordError.textContent = "";
+
+      let isValid = true;
+
+      if (name === "") {
+        nameError.textContent = "Name is required";
+        isValid = false;
+      }
+      if (email === "") {
+        emailError.textContent = "Email is required";
+        isValid = false;
+      }
+      if (phone === "") {
+        phoneError.textContent = "Phone number is required";
+        isValid = false;
+      }
+      if (password === "") {
+        passwordError.textContent = "Password is required";
+        isValid = false;
+      }
+
+      if (isValid) {
+        alert("Form submitted successfully ✅");
+        // Here you can send data to server
+      }
+    });
+  </script>
+</body>
+</html>
