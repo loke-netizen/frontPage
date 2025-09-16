@@ -115,6 +115,7 @@ btn.addEventListener("click",(event)=>
         var number=document.querySelector("#number").value.trim()
 var errors=document.querySelectorAll(".error")  
 var result=document.querySelector(".result")
+result.innerText = ""; 
 let isValid=true;
 var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // simple email pattern
  errors.forEach(error => error.innerText = "");
@@ -156,9 +157,10 @@ else if (!/^\d{10}$/.test(number)) {
 if(isValid)
 {
 result.innerText="---You have successfully signed in ✅---"
-}else{
-   result.innerText = ""
 }
+// else{
+//    result.innerText = ""
+// }
 })
 
     </script>
