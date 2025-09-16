@@ -18,55 +18,49 @@
     border-radius: 15px;
     box-shadow: 0 0 30px rgba(0,0,0,0.5);
     height: 80vh;
-
-    
-   
-    
-}
-
-        .form-group {
+    }
+     .form-group {
             padding: 20px;
             display: flex;
             flex-direction: column;
             box-shadow: 0 0 20px rgba(0,0,0,0.5);
-        }
+      }
 
-        body {
+      body {
             background-color: darkslateblue;
             color: #ffffff;
         }
 
         form input {
             width: 300px;
-            /* or any size you want */
             padding: 8px;
             margin-bottom: 10px;
             border-radius: 5px;
             border: none;
         }
         .error {
-    color: red;
-    font-size: 14px;
-    margin-bottom: 1px;
-}
-button {
-    width: 150px;
-    padding: 10px;
-    background-color: #FFD700; /* golden button */
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 10px;
-}
+             color: red;
+             font-size: 14px;
+             margin-bottom: 1px;
+        }
+        button {
+              width: 150px;
+              padding: 10px;
+              background-color: #FFD700; /* golden button */
+              border: none;
+              border-radius: 8px;
+             font-weight: bold;
+             cursor: pointer;
+              margin-top: 10px;
+        }
 
-button:hover {
-    background-color: #FFA500; /* orange on hover */
-    color: #fff;
-}
-.result{
-    color: rgb(255, 255, 255);font-weight: bold;
-}
+        button:hover {
+            background-color: #FFA500; /* orange on hover */
+            color: #fff;
+        }
+        .result{
+            color: rgb(255, 255, 255);font-weight: bold;
+        }
 
     </style>
 </head>
@@ -100,7 +94,6 @@ button:hover {
     <script>
        
 
-// error statement
         
       var btn=document.querySelector("#btn")
 
@@ -115,6 +108,7 @@ btn.addEventListener("click",(event)=>
         var number=document.querySelector("#number").value.trim()
 var errors=document.querySelectorAll(".error")  
 var result=document.querySelector(".result")
+let isValid=true;
 result.innerText = ""; var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // simple email pattern
  errors.forEach(error => error.innerText = "");
 if(!fname){
@@ -156,9 +150,7 @@ if(isValid)
 {
 result.innerText="---You have successfully signed in ✅---"
 }
-// else{
-//    result.innerText = ""
-// }
+
 })
 
     </script>
